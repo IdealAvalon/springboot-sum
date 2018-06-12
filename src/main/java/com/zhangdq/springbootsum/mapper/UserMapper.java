@@ -3,6 +3,8 @@ package com.zhangdq.springbootsum.mapper;
 import com.zhangdq.springbootsum.pojo.User;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * @author: zhangdq
  * @Description:
@@ -11,7 +13,7 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
 
     /**
-     * 根据用户名密码查找用户
+     * 根据用户id查找用户
      * @return
      */
     @Select("select * from user where id=#{id}")
@@ -19,4 +21,11 @@ public interface UserMapper {
 
     @Select("select * from user where username=#{username} and password =#{password}")
     public User getUserByUsernameAndPassword(User user);
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    @Select("select * from user")
+    public List<User> getAll();
 }

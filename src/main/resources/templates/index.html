@@ -50,6 +50,7 @@
                             <li><a href="#">Features</a></li>
                             <li><a href="#">Contact</a></li>
                             <li><a href="#" th:href="@{/userLogin}" th:text="${session.user}==null?'LOGIN':${session.user.username}">LOGIN</a></li>
+                            <li><a href="#" th:href="@{/userHome}" th:text="个人中心" th:if="${session.user}!=null">个人中心</a></li>
                         </ul>
                     </nav>
                 </div>
