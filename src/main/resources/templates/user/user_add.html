@@ -74,41 +74,46 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <!--restful不需要写动作，错误示范：/emp/add-->
                 <form class="bs-example bs-example-form" th:action="@{/user}" method="post">
+                    <!-- 判断user是否为空，如果不为空，则是修改页面，要使用put方式提交 -->
+                    <input type="hidden" name="_method" th:value="put" th:if="${user}!=null">
+                    <!-- 添加一个隐藏的input标签，来携带id信息 -->
+                    <input type="hidden" name="id" th:value="${user.id}" th:if="${user}!=null">
                     <div class="input-group">
                         <span class="input-group-addon" >用户名</span>
-                        <input type="text" class="form-control" name="username" placeholder="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" name="username" placeholder="Username" aria-describedby="basic-addon1" th:value="${user}!=null?${user.username}">
                     </div>
                     <br>
                     <div class="input-group">
                         <div class="input-group-addon" >密码</div>
-                        <input type="password" class="form-control" name="password" placeholder="Password" aria-describedby="basic-addon1">
+                        <!-- 生产环境中，即使是管理员，偷看用户的密码也是不允许的啊，喂！ -->
+                        <input type="password" class="form-control" name="password" placeholder="Password" aria-describedby="basic-addon1" th:value="${user}!=null?${user.password}">
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon" >手机号</span>
-                        <input type="text" class="form-control" name="phone" placeholder="PhoneNumber" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" name="phone" placeholder="PhoneNumber" aria-describedby="basic-addon1" th:value="${user}!=null?${user.phone}">
                     </div>
                     <br>
                     <div >
                     <label>Gender</label><br/>
                     <span class="form-check form-check-inline" >
-                        <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${user}!=null?${user.gender==1}" >
+                        <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${user}!=null?${user.gender}==1" >
                         <label class="form-check-label">男</label>
                     </span>
                     <span class="form-check form-check-inline" >
-                        <input class="form-check-input" type="radio" name="gender" value="0" th:checked="${user}!=null?${user.gender==0}" >
+                        <input class="form-check-input" type="radio" name="gender" value="0" th:checked="${user}!=null?${user.gender}==0" >
                         <label class="form-check-label">女</label>
                     </span>
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon" >邮箱</span>
-                        <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="basic-addon1" th:value="${user}!=null?${user.email}">
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon" >生日</span>
-                        <input type="date" class="form-control" name="birth" placeholder="Username" aria-describedby="basic-addon1">
+                        <input type="date" class="form-control" name="birth" placeholder="Username" aria-describedby="basic-addon1" th:value="${user}!=null?${#dates.format(user.birth,'yyyy-MM-dd')}">
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary" th:text="${user}!=null?'保存':'添加'">添加</button>

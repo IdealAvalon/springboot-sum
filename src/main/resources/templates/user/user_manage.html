@@ -83,6 +83,7 @@
                         <th>email</th>
                         <th>性别</th>
                         <th>生日</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -93,6 +94,10 @@
                         <td th:text="${user.email}">111@12333.com</td>
                         <td th:text="${user.gender}=='1'?'男':'女'">男</td>
                         <td th:text="${#dates.format(user.birth,'yyyy-MM-dd')}">2012-01-01</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" th:href="@{/user/} + ${user.id}">编辑</a>
+                            <a  class="btn btn-sm btn-danger deleteBtn">删除</a>
+                        </td>
                     </tr>
 
                     </tbody>

@@ -4,6 +4,7 @@ import com.zhangdq.springbootsum.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -34,4 +35,7 @@ public interface UserMapper {
     @Options(useGeneratedKeys = true,keyProperty = "id")
     @Insert("insert into user(username,password,gender,email,birth,phone) values(#{username},#{password},#{gender},#{email},#{birth},#{phone})")
     public int insertUser(User user);
+
+    @Update("UPDATE user SET username = #{username},password=#{password},gender=#{gender},email=#{email},birth=#{birth},phone=#{phone} WHERE id = #{id}")
+    public int updateUser(User user);
 }

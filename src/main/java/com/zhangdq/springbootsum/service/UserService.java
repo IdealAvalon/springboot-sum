@@ -46,4 +46,9 @@ public class UserService {
     public int addUser(User user) {
         return userMapper.insertUser(user);
     }
+
+    public int updateUser(User user) {
+
+        return userMapper.updateUser(user);
+    }
 }
