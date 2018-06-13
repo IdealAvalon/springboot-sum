@@ -2,6 +2,7 @@ package com.zhangdq.springbootsum.service;
 
 import com.zhangdq.springbootsum.mapper.UserMapper;
 import com.zhangdq.springbootsum.pojo.User;
+import org.apache.ibatis.annotations.Insert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,12 @@ public class UserService {
     private UserMapper userMapper;
 
     /**
+     * 通过ID查询用户
+     */
+    public User getUserById(Integer id){
+        return userMapper.getUserById(id);
+    }
+    /**
      * 通过用户名密码查询用户
      * @param user
      * @return
@@ -34,5 +41,9 @@ public class UserService {
 
     public List<User> getAllUsers(){
         return userMapper.getAll();
+    }
+
+    public int addUser(User user) {
+        return userMapper.insertUser(user);
     }
 }

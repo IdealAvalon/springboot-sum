@@ -1,5 +1,7 @@
 package com.zhangdq.springbootsum.pojo;
 
+import java.util.Date;
+
 /**
  * @author: zhangdq
  * @Description:
@@ -11,14 +13,14 @@ public class User {
     private String password;
     private String gender;
     private String email;
-    private String birth;
+    private Date birth;
     private String phone;
 
     public String getGender() {
         return gender;
     }
 
-    public User(Integer id, String username, String password, String gender, String email, String birth, String phone) {
+    public User(Integer id, String username, String password, String gender, String email, Date birth, String phone) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -40,11 +42,11 @@ public class User {
         this.email = email;
     }
 
-    public String getBirth() {
+    public Date getBirth() {
         return birth;
     }
 
-    public void setBirth(String birth) {
+    public void setBirth(Date birth) {
         this.birth = birth;
     }
 
@@ -59,11 +61,6 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
 
     public Integer getId() {
         return id;

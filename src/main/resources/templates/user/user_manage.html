@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" th:href="@{/assets/css/dashboard_user_home.css}" rel="stylesheet">
+    <link href="dashboard_user.css" th:href="@{/assets/css/dashboard_user_home.css}" rel="stylesheet">
 
 
 </head>
@@ -71,7 +71,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">用户管理</h1>
 
-            <h2 th:href="@{/user}" type="button" class="btn btn-lg btn-success">添加用户</h2>
+            <h2 ><a th:href="@{/user}" type="button" class="btn btn-lg btn-success">添加用户</a></h2>
 
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -91,8 +91,8 @@
                         <td th:text="${user.username}">zhangsan</td>
                         <td th:text="${user.phone}">15555555555</td>
                         <td th:text="${user.email}">111@12333.com</td>
-                        <td th:text="${user.gender}=='0'?'男':'女'">男</td>
-                        <td th:text="${user.birth}">2012-01-01</td>
+                        <td th:text="${user.gender}=='1'?'男':'女'">男</td>
+                        <td th:text="${#dates.format(user.birth,'yyyy-MM-dd')}">2012-01-01</td>
                     </tr>
 
                     </tbody>
@@ -108,9 +108,6 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
 </body>
 </html>

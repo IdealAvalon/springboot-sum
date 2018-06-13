@@ -1,6 +1,8 @@
 package com.zhangdq.springbootsum.mapper;
 
 import com.zhangdq.springbootsum.pojo.User;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -28,4 +30,8 @@ public interface UserMapper {
      */
     @Select("select * from user")
     public List<User> getAll();
+
+    @Options(useGeneratedKeys = true,keyProperty = "id")
+    @Insert("insert into user(username,password,gender,email,birth,phone) values(#{username},#{password},#{gender},#{email},#{birth},#{phone})")
+    public int insertUser(User user);
 }
