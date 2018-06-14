@@ -25,8 +25,9 @@ public class MvcConfig implements WebMvcConfigurer{
     //设置视图解析器
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/index").setViewName("index");
+        registry.addViewController("/manage").setViewName("index");
+        registry.addViewController("/index").setViewName("portal/index");
+        registry.addViewController("/").setViewName("portal/index");
         registry.addViewController("/userLogin").setViewName("user_login");
         registry.addViewController("/userHome").setViewName("user/user_home");
     }
@@ -50,12 +51,12 @@ public class MvcConfig implements WebMvcConfigurer{
      * 自定义自动登录拦截器，用于测试
      * @return
      */
-    @Bean
-    public UserAutoLoginInterceptor userAutoLoginInterceptor(){
-        return new UserAutoLoginInterceptor();
-    }
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(userAutoLoginInterceptor()).addPathPatterns("/**");
-    }
+//    @Bean
+//    public UserAutoLoginInterceptor userAutoLoginInterceptor(){
+//        return new UserAutoLoginInterceptor();
+//    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(userAutoLoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/index");
+//    }
 }

@@ -30,7 +30,7 @@ public class LoginController {
         if(queryUser!=null&&user!=null&&queryUser.getPassword().equals(user.getPassword())) {
             model.addAttribute("user",queryUser);
             session.setAttribute("user",queryUser);
-            return "redirect:/";
+            return "redirect:/manage";
         }
         msg="登录失败~";
         model.addAttribute("msg", msg);

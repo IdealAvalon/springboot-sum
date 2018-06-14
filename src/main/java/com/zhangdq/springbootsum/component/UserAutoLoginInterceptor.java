@@ -30,7 +30,7 @@ public class UserAutoLoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        User user = userService.getUserById(1);
+        User user = userService.getUserById(6);
         if(user!=null){
             logger.debug("自动登录：" + user.getUsername());
             request.getSession().setAttribute("user",user);

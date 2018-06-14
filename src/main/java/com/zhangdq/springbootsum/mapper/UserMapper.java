@@ -1,10 +1,8 @@
 package com.zhangdq.springbootsum.mapper;
 
 import com.zhangdq.springbootsum.pojo.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
 
@@ -38,4 +36,7 @@ public interface UserMapper {
 
     @Update("UPDATE user SET username = #{username},password=#{password},gender=#{gender},email=#{email},birth=#{birth},phone=#{phone} WHERE id = #{id}")
     public int updateUser(User user);
+
+    @Delete("DELETE FROM user WHERE id = #{id}")
+    public int deleteUserById(Integer id);
 }

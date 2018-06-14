@@ -67,4 +67,14 @@ public class UserController {
         return "redirect:/users";
     }
 
+    /**
+     * 删除用户信息
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/user/{id}")
+    public String deleteUser(@PathVariable("id")Integer id){
+        userService.deleteUser(id);
+        return "redirect:/users";
+    }
 }

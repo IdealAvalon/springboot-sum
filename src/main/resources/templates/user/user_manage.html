@@ -96,16 +96,25 @@
                         <td th:text="${#dates.format(user.birth,'yyyy-MM-dd')}">2012-01-01</td>
                         <td>
                             <a class="btn btn-sm btn-primary" th:href="@{/user/} + ${user.id}">编辑</a>
-                            <a  class="btn btn-sm btn-danger deleteBtn">删除</a>
+                            <!-- 添加一个自定义属性 -->
+                            <a th:attr="del_uri=@{/user/}+${user.id}" class="btn btn-sm btn-danger deleteBtn">删除</a>
                         </td>
                     </tr>
+
 
                     </tbody>
                 </table>
             </div>
+            <!-- 用来提交delete请求 -->
+            <!--就算是要写delete、put方式的请求，form表单中一定也要加上method="post"-->
+            <form id="deleteUserForm" method="post">
+                <input type="hidden" name="_method" value="delete">
+            </form>
         </div>
     </div>
 </div>
+
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -113,6 +122,13 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+    <!-- 使用类选择器 -->
+    $(".deleteBtn").click(function(){
+        $("#deleteUserForm").attr("action",$(this).attr("del_uri")).submit()
+    })
+</script>
 
 </body>
 </html>

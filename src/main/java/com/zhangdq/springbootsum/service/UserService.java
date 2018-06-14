@@ -51,4 +51,8 @@ public class UserService {
 
         return userMapper.updateUser(user);
     }
+
+    public int deleteUser(Integer id) {
+        return userMapper.deleteUserById(id);
+    }
 }
