@@ -1,74 +1,88 @@
-window.onload = function(){
-    waterFull('main','box');
-}
 
-function waterFull(parent,children){
-    var oParent = document.getElementById(parent);
-    //var oBoxs = parent.querySelectorAll(".box");
 
-    var oBoxs = getByClass(oParent,children);
+// window.onload = function() {
+$(function(){
+    //获取界面节点
+    // var ul = document.getElementById('waterfall_ul');
+    // 获取一组标签的集合
+    // var li = document.getElementsByTagName('li');
+    var li = $("#waterfall_ul").find("li")
+    // 得到标签集合的长度
+    // var liLen = li.length;
+    var page = 1;
+    var bool = false;
+    //调用接口获取数据
+    loadPage();//首次加载
+    /**
+     * 加载页面的函数
+     */
+    function loadPage(){
+        // ajax('get', '/pictures','', function(data) {
+        // $.get('/pictures',function (data) {
+        $.ajax({
+            type: "get",
+            url: '/pictures',
+//      data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。
+            data: {"page":page},
+            cache: false,
+            async : false,
+            dataType: "json",
+            success: function (data){
+            //将数据库中获取的数据转换成数组形式，这里要根据数据库中的数据形式来写，这里我获取到的是json形式
+            // var data = JSON.parse(data);
+            // 将数据写入到div中
+            for(var i = 0; i < data.length; i++) {
+                var index = getShort(li);//查找最短的li
+                //创建新的节点：div>img+p
+                var div = document.createElement('div');
+                var img = document.createElement('img');
+                img.src = data[i].preview;//img获取图片地址
+                img.alt = "等着吧..."
+                //根据宽高比计算img的高，为了防止未加载时高度太低影响最短Li的判断
+                img.style.height = data[i].offsetHeight * (230 / data[i].width) + "px";
+                div.appendChild(img);
+                var p = document.createElement('p');
+                p.innerHTML = data[i].title;//p获取图片标题
+                div.appendChild(p);
+                //加入到最短的li中
+                li[index].appendChild(div);
+            }
+            bool = true;//加载完成设置开关，用于后面判断是否加载下一页
+            },
+            error:function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("请求失败！");
+            }
+        });
+    }
 
-    //计算整个页面显示的列数
+    window.onscroll = function (){
+        var index = getShort(li);
+        var minLi = li[index];
+        var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
 
-    var oBoxW = oBoxs[0].offsetWidth;
-
-    var cols = Math.floor(document.documentElement.clientWidth/oBoxW);
-
-    //设置main的宽度，并且居中
-
-    oParent.style.cssText = 'width:'+oBoxW * cols +'px; margin: 0 auto';
-
-    //找出高度最小的图片，将下一个图片放在下面
-
-    //定义一个数组，存放每一列的高度，初始化存的是第一行的所有列的高度
-
-    var arrH = [];
-
-    for(var i = 0; i< oBoxs.length ; i++){
-        if(i < cols){
-            arrH.push(oBoxs[i].offsetHeight);
-        }
-        else{
-            var minH = Math.min.apply(null,arrH);
-
-            var minIndex = getMinhIndex(arrH,minH);
-
-            oBoxs[i].style.position = 'absolute';
-            oBoxs[i].style.top= minH + 'px';
-            oBoxs[i].style.left = minIndex * oBoxW + 'px';
-            //  oBoxs[i].style.left = arrH[minIndex].;
-
-            arrH[minIndex] += oBoxs[i].offsetHeight;
+        if(minLi.offsetHeight+minLi.offsetTop<scrollTop+document.documentElement.clientHeight){
+            //开关为开，即上一页加载完成，才能开始加载
+            if(bool){
+                bool = false;
+                page++;
+                loadPage();
+            }
         }
     }
 
-
-}
-function getByClass(parent,className){
-
-    var boxArr = new Array();//用来获取所有class为box的元素
-
-    oElement = parent.getElementsByTagName('*');
-
-    for (var i = 0; i <oElement.length; i++) {
-
-        if(oElement[i].className == className){
-
-            boxArr.push(oElement[i]);
-
+})
+/**
+ * 获取数组中高度最小的索引
+ * @param {Object} li 数组
+ */
+function getShort(li) {
+    var index = 0;
+    var liHeight = li[index].offsetHeight;
+    for(var i = 0; i < li.length; i++) {
+        if(li[i].offsetHeight < liHeight) {
+            index = i;
+            liHeight = li[i].offsetHeight;
         }
-    };
-    return boxArr;
-}
-
-
-//获取当前最小值得下标
-function getMinhIndex(array,min){
-
-    for(var i in array){
-
-        if(array[i] == min)
-
-            return i;
     }
+    return index;
 }
