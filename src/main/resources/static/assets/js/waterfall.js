@@ -1,14 +1,7 @@
-
-
-// window.onload = function() {
 $(function(){
     //获取界面节点
-    // var ul = document.getElementById('waterfall_ul');
-    // 获取一组标签的集合
-    // var li = document.getElementsByTagName('li');
     var li = $("#waterfall_ul").find("li")
     // 得到标签集合的长度
-    // var liLen = li.length;
     var page = 1;
     var bool = false;
     //调用接口获取数据
@@ -17,19 +10,14 @@ $(function(){
      * 加载页面的函数
      */
     function loadPage(){
-        // ajax('get', '/pictures','', function(data) {
-        // $.get('/pictures',function (data) {
         $.ajax({
             type: "get",
             url: '/pictures',
-//      data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。
             data: {"page":page},
             cache: false,
             async : false,
             dataType: "json",
             success: function (data){
-            //将数据库中获取的数据转换成数组形式，这里要根据数据库中的数据形式来写，这里我获取到的是json形式
-            // var data = JSON.parse(data);
             // 将数据写入到div中
             for(var i = 0; i < data.length; i++) {
                 var index = getShort(li);//查找最短的li
@@ -37,7 +25,7 @@ $(function(){
                 var div = document.createElement('div');
                 var img = document.createElement('img');
                 img.src = data[i].preview;//img获取图片地址
-                img.alt = "等着吧..."
+                img.alt = "Loading..."
                 //根据宽高比计算img的高，为了防止未加载时高度太低影响最短Li的判断
                 img.style.height = data[i].offsetHeight * (230 / data[i].width) + "px";
                 div.appendChild(img);

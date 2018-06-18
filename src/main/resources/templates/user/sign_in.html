@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AAAA</title>
+    <link href="css/bh.css" th:href="@{/assets/css/signin.css}" rel="stylesheet">
+</head>
+<body>
+<div id="root">
+    <div>
+        <header class="AppHeader">
+            <div class="AppHeader-inner">
+                <a href="#" th:href="@{/}">
+                    <img class="mb-4" src="asserts/img/bootstrap-solid.svg" th:src="@{/assets/img/BattleNet.png}" alt="" width="40" height="40">
+                </a>
+                <nav class="AppHeader-nav">
+                    <a class="AppHeader-navItem" href="#" th:href="@{/}">首页</a>
+                    <a class="AppHeader-navItem" href="#">发现</a>
+                    <a href="#" class="AppHeader-navItem">分类</a>
+                </nav>
+                <div class="SearchBar">
+                    <div class="SearchBar-toolWrapper">
+                        <form class="SearchBar-tool" >
+                            <div>
+                                <div class="Popover">
+                                    <div class="SearchBar-input Input-wrapper Input-wrapper--grey">
+                                        <input
+                                                type="text" maxlength="100" value="" id="searchBar" class="Input"
+                                                placeholder="Your Favorite">
+                                        <div class="Input-after">
+                                            <button type="button" class="Button SearchBar-searchIcon ">
+                                                <svg viewBox="0 0 16 16" class="Icon"
+                                                     style="height:16px;width:16px" width="16" height="16">
+                                                    <g>
+                                                        <path d="M12.054 10.864c.887-1.14 1.42-2.57 1.42-4.127C13.474 3.017 10.457 0 6.737 0S0 3.016 0 6.737c0 3.72 3.016 6.737 6.737 6.737 1.556 0 2.985-.533 4.127-1.42l3.103 3.104c.765.46 1.705-.37 1.19-1.19l-3.103-3.104zm-5.317.925c-2.786 0-5.053-2.267-5.053-5.053S3.95 1.684 6.737 1.684 11.79 3.95 11.79 6.737 9.522 11.79 6.736 11.79z"></path>
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="AppHeader-userInfo">
+                    <div>
+                        <button type="button" class="Button AppHeader-login Button--blue">LOGIN</button>
+                        <button type="button" class="Button Button--primary Button--blue">Join us</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <main class="App-main">
+        <!-- 下面这个class 中配置了背景图片 -->
+        <div class="SignFlowHomepage">
+            <div class="SignFlowHomepage-content">
+                <div class="Card SignContainer-content">
+                    <div class="SignFlowHeader" style="padding-bottom:5px">
+                        <!-- 图标 -->
+                        <img class="mb-4" src="asserts/img/bootstrap-solid.svg" th:src="@{/assets/img/BattleNet.png}" alt="" width="72" height="72">
+                        <!-- 图标下面的解释行 -->
+                        <div class="SignFlowHeader-slogen">Welome to Avalon</div>
+                    </div>
+                    <!-- 用户登录的div框 -->
+                    <div class="SignContainer-inner">
+                        <div class="Login-content">
+                            <!-- 用户登录表单 -->
+                            <form class="SignFlow" th:action="@{/user/login}" method="post">
+                                <!-- 登录div -->
+                                <!-- 输入账户 -->
+                                <div class="SignFlow-account">
+                                    <div class="SignFlowInput SignFlow-accountInputContainer">
+                                        <div class="SignFlow-accountInput Input-wrapper">
+                                            <input name="username" type="text" class="Input" placeholder="邮箱"
+                                                   value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 输入密码 -->
+                                <div class="SignFlow-password">
+                                    <div class="SignFlowInput">
+                                        <div class="Input-wrapper">
+                                            <input name="password" type="password" class="Input" placeholder="密码"
+                                                   value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 切换登录方式和忘记密码 -->
+                                <div class="Login-options">
+                                    <button type="button" class="Button Login-switchType Button--plain">发送邮件登录
+                                    </button>
+                                    <button type="button" class="Button Login-cannotLogin Button--plain">忘记密码？
+                                    </button>
+                                </div>
+                                <button type="submit"
+                                        class="Button SignFlow-submitButton Button--primary Button--blue">登录
+                                </button>
+                                <div class="Login-footer">
+                                    <!--<p>aaaa</p>-->
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="SignContainer-switch">
+                            没有帐号？<span>注册</span>
+                        </div>
+                    </div>
+                </div>
+                <!--<button type="button" class="Button SignFlowHomepage-downloadBtn">下载 App</button>-->
+            </div>
+            <!-- 页脚 -->
+            <footer class="SignFlowHomepage-footer">
+                <a target="_blank" href="/">圆桌</a>
+                <a target="_blank" href="/">发现</a>
+                <a target="_blank" href="/">移动应用</a>
+            </footer>
+        </div>
+    </main>
+    <!-- 右下角小浮动的小图标 -->
+    <div class="CornerButtons">
+        <div class="CornerAnimayedFlex">
+            <button type="button" class="Button CornerButton Button--plain">
+                <svg class="Zi" title="建议反馈" fill="currentColor" viewBox="0 0 24 24" width="24"
+                     height="24">
+                    <path d="M19.99 6.99L18 5s-1-1-2-1H8C7 4 6 5 6 5L4 7S3 8 3 9v9s0 2 2.002 2H19c2 0 2-2 2-2V9c0-1-1.01-2.01-1.01-2.01zM16.5 5.5L19 8H5l2.5-2.5h9zm-2 5.5s.5 0 .5.5-.5.5-.5.5h-5s-.5 0-.5-.5.5-.5.5-.5h5z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
