@@ -63,6 +63,7 @@
                         <!-- 图标下面的解释行 -->
                         <div class="SignFlowHeader-slogen">Welome to Avalon</div>
                     </div>
+                    <p style="color:red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}" ></p>
                     <!-- 用户登录的div框 -->
                     <div class="SignContainer-inner">
                         <div class="Login-content">

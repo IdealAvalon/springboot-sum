@@ -25,13 +25,15 @@ public class MvcConfig implements WebMvcConfigurer{
     //设置视图解析器
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/manage").setViewName("index");
-        registry.addViewController("/index").setViewName("portal/index");
+        // 门户首页
         registry.addViewController("/").setViewName("portal/index");
-        registry.addViewController("/index2").setViewName("portal/index2");
-        registry.addViewController("/userLogin").setViewName("user_login");
+        registry.addViewController("/index").setViewName("portal/index");
+        // 登录页
+        registry.addViewController("/userLogin").setViewName("sign_in");
+        registry.addViewController("/sign").setViewName("sign_in");
+        // 后台管理页
+        registry.addViewController("/manage").setViewName("user/index");
         registry.addViewController("/userHome").setViewName("user/user_home");
-        registry.addViewController("/sign").setViewName("user/sign_in");
     }
 
     /**
@@ -53,12 +55,12 @@ public class MvcConfig implements WebMvcConfigurer{
      * 自定义自动登录拦截器，用于测试
      * @return
      */
-//    @Bean
-//    public UserAutoLoginInterceptor userAutoLoginInterceptor(){
-//        return new UserAutoLoginInterceptor();
-//    }
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(userAutoLoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/index");
-//    }
+    @Bean
+    public UserAutoLoginInterceptor userAutoLoginInterceptor(){
+        return new UserAutoLoginInterceptor();
+    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(userAutoLoginInterceptor()).addPathPatterns("/").excludePathPatterns("/sign");
+    }
 }
