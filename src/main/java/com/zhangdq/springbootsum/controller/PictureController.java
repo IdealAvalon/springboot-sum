@@ -1,10 +1,18 @@
 package com.zhangdq.springbootsum.controller;
 
+import com.zhangdq.springbootsum.pojo.FastDFSFile;
 import com.zhangdq.springbootsum.pojo.Picture;
+import com.zhangdq.springbootsum.utils.FastDFSClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +23,7 @@ import java.util.List;
  */
 @RestController
 public class PictureController {
+    private static final Logger logger = LoggerFactory.getLogger(PictureController.class);
 
     @RequestMapping("/pictures")
     public List<Picture> loadPictures(Model model){
@@ -26,4 +35,11 @@ public class PictureController {
         model.addAttribute("data",list);
         return list;
     }
+
+    @PostMapping("/picture")
+    public String upload(){
+
+        return
+    }
+
 }

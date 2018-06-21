@@ -34,7 +34,10 @@
 
             <h2 class="sub-header">新的发布</h2>
             <div class="table-responsive">
-
+                <form method="POST" action="/picture" th:action="@{/picture}" enctype="multipart/form-data">
+                    <input type="file" name="file" /><br/><br/>
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
         </div>
     </div>
