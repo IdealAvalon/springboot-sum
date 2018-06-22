@@ -14,10 +14,10 @@ public class FastDFSClient {
 
     private static final Logger logger = LoggerFactory.getLogger(FastDFSClient.class);
 
-    private static TrackerClient trackerClient = null;
-    private static TrackerServer trackerServer = null;
-    private static StorageServer storageServer = null;
-    private static StorageClient1 storageClient = null;
+    private TrackerClient trackerClient = null;
+    private TrackerServer trackerServer = null;
+    private StorageServer storageServer = null;
+    private StorageClient1 storageClient = null;
 
     public FastDFSClient(String conf) throws Exception {
         if (conf.contains("classpath:")) {

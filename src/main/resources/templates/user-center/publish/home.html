@@ -15,8 +15,15 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="dashboard.css" th:href="@{/assets/css/dashboard_user_home.css}" rel="stylesheet">
-
-
+    <link rel="stylesheet" th:href="@{/assets/css/waterfall.css}" >
+    <!-- 引入JQuery -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <!-- 引入瀑布流布局相关 JavaScript 文件 -->
+    <script src="../assets/js/pubuliu.js" th:src="@{/assets/js/waterfall.js}" type="text/javascript"
+            charset="utf-8"></script>
 </head>
 
 <body>
@@ -32,9 +39,16 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">图片发布</h1>
 
-            <h2 class="sub-header">新的发布</h2>
+            <h2 ><a th:href="@{/toPictureUpload}" type="button" class="btn btn-lg btn-success">发布图片</a></h2>
             <div class="table-responsive">
-
+                <div class="waterfall">
+                    <ul id="waterfall_ul">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
