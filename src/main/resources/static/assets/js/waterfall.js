@@ -31,7 +31,7 @@ $(function(){
                 img.style.height = data[i].offsetHeight * (230 / data[i].width) + "px";
                 div.appendChild(img);
                 var p = document.createElement('p');
-                p.innerHTML = data[i].title;//p获取图片标题
+                p.innerHTML = data[i].describe;//p获取图片标题
                 div.appendChild(p);
                 //加入到最短的li中
                 li[index].appendChild(div);

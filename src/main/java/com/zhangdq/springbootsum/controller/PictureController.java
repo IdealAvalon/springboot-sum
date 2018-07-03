@@ -2,6 +2,7 @@ package com.zhangdq.springbootsum.controller;
 
 import com.zhangdq.springbootsum.mapper.PictureMapper;
 import com.zhangdq.springbootsum.pojo.Picture;
+import com.zhangdq.springbootsum.pojo.PictureTest;
 import com.zhangdq.springbootsum.utils.FastDFSClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,17 +39,10 @@ public class PictureController {
     @ResponseBody
     public List<Picture> loadPictures(Model model) {
 
-//        List<Picture> pictures = pictureMapper.getPictures();
-//
-//        model.addAttribute("data", pictures);
-//        return pictures;
+        List<Picture> pictures = pictureMapper.getPictures();
 
-        List<Picture> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-//            list.add(new Picture("aa", "zheshi " + i, "/assets/images/" + i + ".jpg"));
-            list.add(new Picture(null,"/assets/images/" + i + ".jpg",null,null,null,null,null,null));
-        }
-        return list;
+        model.addAttribute("data", pictures);
+        return pictures;
 
     }
 

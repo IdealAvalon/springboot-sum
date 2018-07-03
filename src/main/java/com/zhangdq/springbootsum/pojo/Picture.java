@@ -1,11 +1,13 @@
 package com.zhangdq.springbootsum.pojo;
 
+import java.io.Serializable;
+
 /**
  * @author: zhangdq
  * @Description:
  * @Date: Create in 12:34 2018/6/14
  */
-public class Picture {
+public class Picture implements Serializable{
 
     private String id;
     private String pictureSrc;

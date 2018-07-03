@@ -24,7 +24,7 @@ public interface PictureMapper {
      * 保存图片信息
      */
     @Options(useGeneratedKeys = true,keyProperty = "id")
-    @Insert("insert into picture(src,uid,title,`describe`,count,proto_user,is_origin) values(#{pictureSrc},#{user},#{title},#{describe},#{count},#{protoUser},#{isOrigin})")
+    @Insert("insert into picture(picture_src,user,title,`describe`,count,proto_user,is_origin) values(#{pictureSrc},#{user},#{title},#{describe},#{count},#{protoUser},#{isOrigin})")
     public int insertPicture(Picture picture);
 
 }
