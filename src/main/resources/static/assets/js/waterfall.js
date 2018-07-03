@@ -24,7 +24,8 @@ $(function(){
                 //创建新的节点：div>img+p
                 var div = document.createElement('div');
                 var img = document.createElement('img');
-                img.src = data[i].preview;//img获取图片地址
+                img.src = data[i].pictureSrc;//img获取图片地址
+                // img.src = 'http://120.78.161.117:8888/group1/M00/00/00/rBL6CFs7K5KAPHXvAABHCC7xdws519.jpg';//img获取图片地址
                 img.alt = "Loading..."
                 //根据宽高比计算img的高，为了防止未加载时高度太低影响最短Li的判断
                 img.style.height = data[i].offsetHeight * (230 / data[i].width) + "px";

@@ -7,33 +7,51 @@ package com.zhangdq.springbootsum.pojo;
  */
 public class Picture {
 
-    String title;
-    String preview;
-    String introduce;
+    private String id;
+    private String pictureSrc;
+    private String user;
+    private String title;
+    private String describe;
+    private String count;
+    private String protoUser;
+    private String isOrigin;
 
-    public Picture(String title, String introduce, String preview) {
+    public Picture() {
+    }
+
+    public Picture(String id, String pictureSrc, String user, String title, String describe, String count, String protoUser, String isOrigin) {
+        this.id = id;
+        this.pictureSrc = pictureSrc;
+        this.user = user;
         this.title = title;
-        this.preview = preview;
-        this.introduce = introduce;
-
+        this.describe = describe;
+        this.count = count;
+        this.protoUser = protoUser;
+        this.isOrigin = isOrigin;
     }
 
-
-
-    public String getPreview() {
-        return preview;
+    public String getId() {
+        return id;
     }
 
-    public void setPreview(String preview) {
-        this.preview = preview;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getIntroduce() {
-        return introduce;
+    public String getPictureSrc() {
+        return pictureSrc;
     }
 
-    public void setIntroduce(String introduce) {
-        this.introduce = introduce;
+    public void setPictureSrc(String pictureSrc) {
+        this.pictureSrc = pictureSrc;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getTitle() {
@@ -43,4 +61,37 @@ public class Picture {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
+    public String getProtoUser() {
+        return protoUser;
+    }
+
+    public void setProtoUser(String protoUser) {
+        this.protoUser = protoUser;
+    }
+
+    public String getIsOrigin() {
+        return isOrigin;
+    }
+
+    public void setIsOrigin(String isOrigin) {
+        this.isOrigin = isOrigin;
+    }
+
 }
