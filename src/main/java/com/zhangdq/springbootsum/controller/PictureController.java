@@ -52,7 +52,7 @@ public class PictureController {
      */
     @GetMapping("/toPictureUpload")
     public String toUpload() {
-        return "/user-center/publish/upload";
+        return "user-center/publish/upload";
     }
 
     /**
@@ -62,8 +62,8 @@ public class PictureController {
     private String IMAGE_SERVER_URL;
 
     @PostMapping(value = "/picture", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ResponseBody
-    public Map upload(MultipartFile uploadFile) {
+//    @ResponseBody
+    public String upload(MultipartFile uploadFile) {
         try {
             //接收上传的文件
             byte[] content = uploadFile.getBytes();
@@ -84,13 +84,13 @@ public class PictureController {
             picture.setPictureSrc(IMAGE_SERVER_URL + url);
             pictureMapper.insertPicture(picture);
             //返回结果
-            return result;
+            return "user-center/publish/home";
         } catch (Exception e) {
             e.printStackTrace();
             Map result = new HashMap<>();
             result.put("error", 1);
             result.put("message", "图片上传失败");
-            return result;
+            return "user-center/publish/home";
         }
     }
 

@@ -26,11 +26,11 @@ public class SpringbootSumApplicationTests {
 	@Autowired
 	UserService userService;
 
-	@Test
-	public void testGetUserById(){
-		User user = userService.getUserById(1);
-		System.out.println(user.getUsername());
-	}
+//	@Test
+//	public void testGetUserById(){
+//		User user = userService.getUserById(1);
+//		System.out.println(user.getUsername());
+//	}
 
 	@Test
 	public void testFastDfsClient() throws Exception {

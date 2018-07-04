@@ -55,12 +55,12 @@ public class MvcConfig implements WebMvcConfigurer{
      * 自定义自动登录拦截器，用于测试
      * @return
      */
-    @Bean
-    public UserAutoLoginInterceptor userAutoLoginInterceptor(){
-        return new UserAutoLoginInterceptor();
-    }
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(userAutoLoginInterceptor()).addPathPatterns("/").excludePathPatterns("/sign");
-    }
+//    @Bean
+//    public UserAutoLoginInterceptor userAutoLoginInterceptor(){
+//        return new UserAutoLoginInterceptor();
+//    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(userAutoLoginInterceptor()).addPathPatterns("/").excludePathPatterns("/sign");
+//    }
 }

@@ -17,6 +17,6 @@ public class UserCenterController {
      */
     @RequestMapping("/users/publish")
     public String publish(){
-        return "/user-center/publish/home";
+        return "user-center/publish/home";
     }
 }
